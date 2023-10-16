@@ -23,6 +23,11 @@ namespace negocio
             conexion = new SqlConnection("server=.\\SQLEXPRESS;database=POKEDEX_DB;integrated security=true");
             comando = new SqlCommand();
         }
+        public void setProcedure(string sp)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = sp;
+        }
 
         public void setearConsulta(string consulta)
         {

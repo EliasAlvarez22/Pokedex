@@ -64,7 +64,53 @@ namespace negocio
             }            
         }
 
+        public List<Pokemon> ListarSP()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setProcedure("storedListar");
+            datos.ejecutarConsulta();
+            SqlDataReader lector = datos.Lector;
 
+            while (lector.Read())
+            {
+                Pokemon aux = new Pokemon
+                {
+                    Id = (int)lector["Id"],
+                    Numero = (int)lector["Numero"],
+                    Nombre = (string)lector["Nombre"],
+                    Descripcion = (string)lector["Descripcion"]
+                };
+                if (!(lector["UrlImagen"] is DBNull))
+                    aux.UrlImagen = (string)lector["UrlImagen"];
+
+                aux.Tipo = new Elemento
+                {
+                    Id = (int)lector["IdTipo"],
+                    Descripcion = (string)lector["Tipo"]
+                };
+                aux.Debilidad = new Elemento
+                {
+                    Id = (int)lector["IdDebilidad"],
+                    Descripcion = (string)lector["Debilidad"]
+                };
+
+                lista.Add(aux);
+            }
+
+            return lista;
+
+
+        }
+
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void agregar(Pokemon nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
