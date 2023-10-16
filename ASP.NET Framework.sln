@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemons", "Pokemons\Pokemons.csproj", "{2C91A140-E60B-4F4B-A645-2F4445A54942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio1", "Persona\Dominio1.csproj", "{8FC54738-18E8-4D04-B368-0F929E3F6814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio1", "Negocio\Negocio1.csproj", "{BFAB0EFB-E754-4EC6-B309-1E20E1F72A4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C91A140-E60B-4F4B-A645-2F4445A54942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C91A140-E60B-4F4B-A645-2F4445A54942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C91A140-E60B-4F4B-A645-2F4445A54942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C91A140-E60B-4F4B-A645-2F4445A54942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC54738-18E8-4D04-B368-0F929E3F6814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC54738-18E8-4D04-B368-0F929E3F6814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC54738-18E8-4D04-B368-0F929E3F6814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC54738-18E8-4D04-B368-0F929E3F6814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFAB0EFB-E754-4EC6-B309-1E20E1F72A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAB0EFB-E754-4EC6-B309-1E20E1F72A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAB0EFB-E754-4EC6-B309-1E20E1F72A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAB0EFB-E754-4EC6-B309-1E20E1F72A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4445E546-BFED-401B-AD43-50752D0712BB}
+	EndGlobalSection
+EndGlobal
