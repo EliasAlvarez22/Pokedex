@@ -1,0 +1,16 @@
+﻿
+/*
+Nombre del Procedimiento: RegisterUser
+Descripción: Este procedimiento almacena un nuevo usuario en la tabla de USUARIOS.
+
+Parámetros:
+- @email (nvarchar) - Correo electrónico del usuario.
+- @password (nvarchar) - Contraseña del usuario.
+
+Uso:
+EXEC RegisterUser
+    @email = 'nuevo_usuario@email.com',
+    @password = 'contraseña123';
+
+Resultado: Inserta un nuevo registro en la tabla de USUARIOS.
+*/

@@ -10,24 +10,24 @@ using System.Web.UI.WebControls;
 namespace Pokemons
 {
     public partial class _Default : Page
-    {       
+    {
+        //public List<Pokemon> ListaPokemons { get; set; } //Con ForEach
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["listaAutos"] == null)
+            PokemonNegocio negocio = new PokemonNegocio();
+           
+            //ListaPokemons = negocio.ListarSP(); //Con ForEach
+
+            if(!IsPostBack)
             {
-                AutoNegocio autoNegocio = new AutoNegocio();
-                Session.Add("listaAutos", autoNegocio.Listar());
+                RptPokemons.DataSource = negocio.ListarSP();
+                RptPokemons.DataBind();
             }
-            dgvAutos.DataSource = Session["listaAutos"];
-            dgvAutos.DataBind();
         }
 
-        protected void dgvAutos_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            var id = dgvAutos.SelectedDataKey.Value.ToString();
-            Response.Redirect("AutoForm.aspx?id=" + id);
-
-
+            int id = int.Parse(((Button)sender).CommandArgument);
         }
     }
 }

@@ -7,9 +7,9 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using dominio;
+using Dominio;
 
-namespace negocio
+namespace Negocio
 {
     public class PokemonNegocio
     {
@@ -67,7 +67,9 @@ namespace negocio
         public List<Pokemon> ListarSP()
         {
             AccesoDatos datos = new AccesoDatos();
-            datos.setProcedure("storedListar");
+            List<Pokemon> lista = new List<Pokemon>();
+
+            datos.SetProcedure("storedListarPokemons");
             datos.ejecutarConsulta();
             SqlDataReader lector = datos.Lector;
 
@@ -96,21 +98,8 @@ namespace negocio
 
                 lista.Add(aux);
             }
-
             return lista;
-
-
-        }
-
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
+        }          
         public void agregar(Pokemon nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -174,7 +163,6 @@ namespace negocio
                 datos.cerrarConexion();
             }            
         }
-
         public void eliminarLogico(int Id)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -191,8 +179,6 @@ namespace negocio
                 throw ex; 
             }
         }
-
-
         public List<Pokemon> Filtrar(string campo, string criterio, string filtro)
         {
             List<Pokemon> lista = new List<Pokemon>();

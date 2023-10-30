@@ -4,3 +4,9 @@ C:\Users\Elias\source\repos\ASP.NET Framework\Persona\obj\Debug\Dominio.csproj.A
 C:\Users\Elias\source\repos\ASP.NET Framework\Persona\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Elias\source\repos\ASP.NET Framework\Persona\obj\Debug\Persona.dll
 C:\Users\Elias\source\repos\ASP.NET Framework\Persona\obj\Debug\Persona.pdb
+C:\Users\Elias\source\repos\ASP.NET Framework\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\Elias\source\repos\ASP.NET Framework\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Elias\source\repos\ASP.NET Framework\Dominio\bin\Debug\Dominio.dll
+C:\Users\Elias\source\repos\ASP.NET Framework\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Elias\source\repos\ASP.NET Framework\Dominio\obj\Debug\Dominio.dll
+C:\Users\Elias\source\repos\ASP.NET Framework\Dominio\obj\Debug\Dominio.pdb

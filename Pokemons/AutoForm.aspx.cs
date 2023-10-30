@@ -31,7 +31,7 @@ namespace Pokemons
                 txtDescripcion.Text = seleccionado.Descripcion;
                 txtModelo.Text = seleccionado.Modelo;
                 ddlColores.Text = seleccionado.Color;
-                txtFecha.Text = seleccionado.Fecha;
+                txtFecha.Text = seleccionado.Fecha.ToString();
             }
         }
 
@@ -62,6 +62,6 @@ namespace Pokemons
         private void ValidarCampos()
         {
             //throw new NotImplementedException();
-        }
+        }        
     }
 }

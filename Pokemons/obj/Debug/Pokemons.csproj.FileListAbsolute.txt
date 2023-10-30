@@ -73,7 +73,7 @@ C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\obj\Debug\Pokemons.csproj
 C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\obj\Debug\Pokemons.csproj.CopyComplete
 C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\obj\Debug\Pokemons.dll
 C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\obj\Debug\Pokemons.pdb
-C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\bin\Persona.dll
-C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\bin\Persona.pdb
 C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\bin\Negocio.dll
 C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\bin\Negocio.pdb
+C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\bin\Dominio.dll
+C:\Users\Elias\source\repos\ASP.NET Framework\Pokemons\bin\Dominio.pdb

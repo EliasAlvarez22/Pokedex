@@ -5,13 +5,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using dominio;
+using Dominio;
 
-namespace negocio
+namespace Negocio
 {
     public class ElementoNegocio
     {
-
         public List<Elemento> ListarElementos()
         {
 			List<Elemento> lista = new List<Elemento>();

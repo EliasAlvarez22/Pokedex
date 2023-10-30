@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dominio
+namespace Dominio
 {
     public class Pokemon
     {
@@ -21,6 +21,8 @@ namespace dominio
         public string UrlImagen { get; set; }
         public Elemento Tipo { get; set; }
         public Elemento Debilidad { get; set; }
+        public Pokemon IdEvolucion { get; set; }
+        
 
     }
 }

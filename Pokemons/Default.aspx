@@ -1,25 +1,39 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Pokemons._Default" %>
+﻿<%@ Page Title="Pokedex Web" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Pokemons._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <main class="d-flex justify-content-center">
-        <section clas="row">
-            <div class="col-8 mb-3">
-                <asp:GridView runat="server" ID="dgvAutos" DataKeyNames="Id"  OnSelectedIndexChanged="dgvAutos_SelectedIndexChanged" CssClass="table table-dark col-6" AutoGenerateColumns="false">
-                    <Columns>
-                        <asp:BoundField  HeaderText="Modelo" DataField="Modelo"/>
-                        <asp:BoundField  HeaderText="Color" DataField="Color"/>
-                        <asp:CheckBoxField HeaderText="Usado" DataField="Usado"/>
-                        <asp:CheckBoxField HeaderText="Importado" DataField="Importado"/>
-                        <asp:CommandField HeaderText="Acción" SelectText="Seleccionar" ShowSelectButton="true"/>
-                    </Columns>
-                </asp:GridView>
-            </div>
-            <div class="mb-3">
-                <asp:HyperLink runat="server" ID="btnAgregar" NavigateUrl="~/AutoForm.aspx" CssClass="btn btn-primary" Text="Agregar Auto" />
-
-            </div>
-        </section>
-
+    <main class="">
+        <h1>Pokedex Web</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            
+        <%--<% foreach (Dominio.Pokemon poke in ListaPokemons)
+            {
+        %>        
+                <div class="col d-flex " >
+                    <div class="card" style="width:340px">
+                        <img src="<%: poke.UrlImagen %>" class="card-img-top " alt="<%:poke.Nombre %>"  style="height:250px" >
+                        <div class="card-body" style="" >
+                            <h5 class="card-title"><%: poke.Nombre %></h5>
+                            <p class="card-text" style="height:40px"><%: poke.Descripcion %></p>
+                            <a href="DetallesPokemon.aspx?id=<%: poke.Id %>" class="btn btn-primary">Ver detalles</a>                           
+                        </div>
+                    </div>
+                </div>
+        <%} %>--%>
+           <asp:Repeater runat="server" ID="RptPokemons">
+               <ItemTemplate>
+                   <div class="col d-flex " >
+                    <div class="card" style="width:340px">
+                        <img src="<%#Eval("UrlImagen") %>" class="card-img-top " alt="<%#Eval("Nombre") %>"  style="height:250px">
+                        <div class="card-body" style="" >
+                            <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                            <p class="card-text" style="height:40px"><%#Eval("Descripcion") %></p>
+                            <a href="DetallesPokemon.aspx?id=<%#Eval("Id") %>" class="btn btn-primary">Ver detalles</a >
+                            <asp:Button runat="server" ID="btnEliminar" Text="Eliminar" CommandArgument='<%#Eval("Id") %>' OnClick="btnEliminar_Click" CommandName="IdPokemon" CssClass="btn btn-danger" />
+                        </div>
+                    </div>
+                </div>
+               </ItemTemplate>
+           </asp:Repeater>
+        </div>
     </main>
-
 </asp:Content>

@@ -2,8 +2,8 @@ C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\obj\Debug\Negocio.csproj.A
 C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\bin\Debug\Negocio.dll
 C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\bin\Debug\Negocio.pdb
-C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\bin\Debug\Persona.dll
-C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\bin\Debug\Persona.pdb
 C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\obj\Debug\Negocio.dll
 C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\bin\Debug\Dominio.dll
+C:\Users\Elias\source\repos\ASP.NET Framework\Negocio\bin\Debug\Dominio.pdb
