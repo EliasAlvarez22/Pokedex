@@ -19,11 +19,11 @@
                     </div>
                 </div>
         <%} %>--%>
-           <asp:Repeater runat="server" ID="RptPokemons">
+           <asp:Repeater runat="server" ID="RptPokemons" OnItemDataBound="RptPokemons_ItemDataBound">
                <ItemTemplate>
                    <div class="col d-flex " >
                     <div class="card" style="width:340px">
-                        <img src="<%#Eval("UrlImagen") %>" class="card-img-top " alt="<%#Eval("Nombre") %>"  style="height:250px">
+                        <asp:Image ID="imgPokemon" runat="server" ImageUrl='<%#Eval("UrlImagen") %>' CssClass="card-img-top " alt='<%#Eval("Nombre") %>'  style="height:250px"  />
                         <div class="card-body" style="" >
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text" style="height:40px"><%#Eval("Descripcion") %></p>

@@ -179,59 +179,66 @@ namespace Negocio
                 throw ex; 
             }
         }
-        public List<Pokemon> Filtrar(string campo, string criterio, string filtro)
+        public List<Pokemon> Filtrar(string campo = "", string criterio = "", string filtroAvanzado = "", string numero = "")
         {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1 And ";
-                if (campo == "Número")
+               
+                if(numero != "")
                 {
-                    switch (criterio)
-                    {
-                        case "Mayor a":
-                            consulta += "Numero > " + filtro;
-                            break;
-                        case "Menor a":
-                            consulta += "Numero < " + filtro;
-                            break;
-                        default:
-                            consulta += "Numero = " + filtro;
-                            break;
-                    }
-                }
-                else if (campo == "Nombre")
-                {
-                    switch (criterio)
-                    {
-                        case "Comienza con":
-                            consulta += "Nombre like '" + filtro + "%' ";
-                            break;
-                        case "Termina con":
-                            consulta += "Nombre like '%" + filtro + "'";
-                            break;
-                        default:
-                            consulta += "Nombre like '%" + filtro + "%'";
-                            break;
-                    }
+                     consulta += " Numero = " + numero;
                 }
                 else
                 {
-                    switch (criterio)
+                    if (campo == "Número")
                     {
-                        case "Comienza con":
-                            consulta += "P.Descripcion like '" + filtro + "%' ";
-                            break;
-                        case "Termina con":
-                            consulta += "P.Descripcion like '%" + filtro + "'";
-                            break;
-                        default:
-                            consulta += "P.Descripcion like '%" + filtro + "%'";
-                            break;
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "Numero > " + filtroAvanzado;
+                                break;
+                            case "Menor a":
+                                consulta += "Numero < " + filtroAvanzado;
+                                break;
+                            default:
+                                consulta += "Numero = " + filtroAvanzado;
+                                break;
+                        }
                     }
-                }
-
+                    else if (campo == "Nombre")
+                    {
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "Nombre like '" + filtroAvanzado + "%' ";
+                                break;
+                            case "Termina con":
+                                consulta += "Nombre like '%" + filtroAvanzado + "'";
+                                break;
+                            default:
+                                consulta += "Nombre like '%" + filtroAvanzado + "%'";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "P.Descripcion like '" + filtroAvanzado + "%' ";
+                                break;
+                            case "Termina con":
+                                consulta += "P.Descripcion like '%" + filtroAvanzado + "'";
+                                break;
+                            default:
+                                consulta += "P.Descripcion like '%" + filtroAvanzado + "%'";
+                                break;
+                        }
+                    }
+                }              
                 datos.setearConsulta(consulta);
                 datos.ejecutarConsulta();
                 SqlDataReader lector = datos.Lector;
@@ -261,13 +268,9 @@ namespace Negocio
 
                     lista.Add(aux);
                 }
-
                 return lista;
-
-
             }
-
-            catch (NullReferenceException ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -275,8 +278,6 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-
-
         }
     }
 }

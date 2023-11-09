@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcessoDatos.cs" />
-    <Compile Include="AutoNegocio.cs" />
     <Compile Include="ElementoNegocio.cs" />
     <Compile Include="PersonaNegocio.cs" />
     <Compile Include="PokemonNegocio.cs" />

@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+
 namespace Negocio
 {
     public class UsuarioNegocio
@@ -37,7 +38,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT id, email, password, admin,nombre, dob, imagenProfile FROM USUARIOS" +
+                datos.setearConsulta("SELECT id, email, password, admin,name, dob, imagenProfile FROM USUARIOS" +
                                      " where email = @email and password = @pass");
                 datos.setearParametros("@email", user.Email);
                 datos.setearParametros("@pass", user.Password);
@@ -50,8 +51,17 @@ namespace Negocio
                     user.Admin = (bool)lector["admin"];
                     if (!(lector["name"] is DBNull))
                         user.Nombre = (string)lector["name"]; 
+                    user.Email = (string)lector["email"];
+                    user.Password = (string)lector["password"];
 
-                   
+                    if (!(lector["dob"] is  DBNull))
+                        user.Edad = DateTime.Now.Year - ((DateTime)lector["dob"]).Year;
+
+                    if (!(lector["imagenProfile"] is DBNull))
+                        user.ImagenPerfil = (string)lector["imagenProfile"];
+
+                    return true;
+
                 }
             }
             catch (Exception ex)

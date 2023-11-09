@@ -41,10 +41,10 @@
                             AutoPostBack="true"/>                        
                     </div>
                     <asp:Image ImageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
-                        runat="server" ID="imgPokemon" Width="60%" CssClass="ms-lg-5"/>
+                        runat="server" ID="imgPokemon" Width="60%" CssClass="ms-lg-5" Height="300px"/>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
+            
         </div>
     </div>
 </asp:Content>

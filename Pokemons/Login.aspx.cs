@@ -29,7 +29,7 @@ namespace Pokemons
                 if (negocio.Login(user))
                 {
                     Session.Add("user", user);
-                    Response.Redirect("profile.aspx", false);
+                    Response.Redirect("Profile.aspx", false);
                 }
             }
             catch (Exception ex)

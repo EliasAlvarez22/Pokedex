@@ -12,6 +12,8 @@ namespace Pokemons
     public partial class PokemonForm : System.Web.UI.Page
     {
         Pokemon seleccionado = null;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SetCamposElementos();
@@ -33,10 +35,12 @@ namespace Pokemons
                     txtDescripcion.Text = seleccionado.Descripcion;
                     txtUrlImagen.Text = seleccionado.UrlImagen;
                     imgPokemon.ImageUrl = seleccionado.UrlImagen;
+                    
                     //Seleccion de elementos del pokemon
                     ddlTipo.SelectedValue = seleccionado.Tipo.Id.ToString();
                     ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString();
-                }               
+                }       
+                
             }
             else
             {
