@@ -33,9 +33,6 @@ namespace Pokemons
 
             if (!IsPostBack)
             {
-                ddlCampos.Items.Add("Numero");
-                ddlCampos.Items.Add("Numero");
-                ddlCampos.Items.Add("Numero");
 
             }
 
@@ -59,10 +56,15 @@ namespace Pokemons
 
             try
             {
-
-                dgvPokemonsLista.DataSource = null;
-                dgvPokemonsLista.DataSource = negocio.Filtrar(numero: txtFiltro.Text);
-                dgvPokemonsLista.DataBind();
+                List<Pokemon> listaResultados = negocio.Filtrar(txtFiltro.Text);
+                if (listaResultados.Count > 0 )
+                {
+                    EnlazarDatosDgv(listaResultados);
+                }
+                else
+                {
+                    dgvPokemonsLista.Visible = false;
+                }
             }
             catch (Exception ex)
             {
@@ -72,9 +74,93 @@ namespace Pokemons
 
         }
 
-        protected void cbxFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
+        
+
+        protected void ddlCampos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cbxFiltroAvanzado.Checked =;
+            try
+            {
+                ddlCriterio.Items.Clear();
+                txtFiltroAvanzado.Enabled = true;
+                if (ddlCampos.Text == "Número")
+                {
+                    ddlCriterio.Items.Add("Igual a");
+                    ddlCriterio.Items.Add("Mayor a");
+                    ddlCriterio.Items.Add("Menor a");
+                }
+                else if (ddlCampos.Text == "Nombre")
+                {
+                    ddlCriterio.Items.Add("Comienza con");
+                    ddlCriterio.Items.Add("Termina con");
+                    ddlCriterio.Items.Add("Igual que");
+                }
+                else if (ddlCampos.Text == "Tipo Elemento")
+                {
+                    
+                    ElementoNegocio negocioElem = new ElementoNegocio();
+
+                    txtFiltroAvanzado.Enabled = false;
+
+                    ddlCriterio.DataSource = null;
+                    ddlCriterio.DataSource = negocioElem.ListarElementos();
+                    ddlCriterio.DataBind();
+                    ddlCriterio.DataMember= "Id";
+                    ddlCriterio.DataTextField = "Descripcion";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            PokemonNegocio negocioPoke = new PokemonNegocio();
+
+            try
+            {
+                //Validacion
+                if (ddlCampos.Text == "Seleccione")
+                    return;
+                
+                List<Pokemon> resultadosFiltrados = negocioPoke.Filtrar(ddlCampos.Text, ddlCriterio.Text, txtFiltroAvanzado.Text);
+                
+                if(resultadosFiltrados != null && resultadosFiltrados.Any())
+                {
+                    dgvPokemonsLista.Visible = true;
+                    
+
+                    dgvPokemonsLista.DataSource = null;
+                    dgvPokemonsLista.DataSource = resultadosFiltrados;
+                    dgvPokemonsLista.DataBind();
+                }
+                else
+                {
+                    dgvPokemonsLista.Visible = false;
+                    
+                }    
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
+
+            }
+        }
+
+        private void EnlazarDatosDgv(List<Pokemon> listaResultados)
+        {
+           if (listaResultados.Count > 0)
+           {
+                dgvPokemonsLista.Visible = true;
+                dgvPokemonsLista.DataSource = null;
+                dgvPokemonsLista.DataSource = listaResultados;
+                dgvPokemonsLista.DataBind();
+           }
+            
         }
     }
 }

@@ -54,25 +54,29 @@
                             <li class="nav-item"><a class="btn btn-outline-primary" runat="server" href="~/Login">Login</a></li>
                             <li class="nav-item"><a class="btn btn-outline-success" runat="server" href="~/RegisterUser">Registrarse</a></li>
                         <%}else{
-                        %>
+                        %>      
+
                                 <li class="nav-item">
-                                    <asp:Button runat="server" ID="btnCloseSession" OnClick="btnCloseSession_Click" Text="Cerrar sesión"/>
-                                    <!-- Example single danger button -->
                                     <div class="btn-group">
-                                      <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Action
-                                      </button>
-                                      <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                      </ul>
+                                        <button type="button" class="btn btn-danger dropdown-toggle mt-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Cerrar sesión
+                                        </button>
+                                        <ul class="dropdown-menu p-0">
+                                            <li><span class="dropdown-item-text">Vuelva pronto!</span></li>
+                                            <li><asp:Button Text="Salir" runat="server" ID="btnExit" OnClick="btnExit_Click" CssClass="btn btn-danger w-100"/>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </li>                           
                         <%}%>
-                        <asp:Image runat="server" AlternateText="" />
+                        <%
+                        if(Usuario != null)
+                        {                        
+                        %>
+                            <asp:Image ID="imgAvatar" runat="server" Width="50px" Height="50px" AlternateText="Avatar Perfil" CssClass="rounded-circle img-fluid" />
+                        <%} 
+                        %>
+                        
                     </ul>
                 </div>
             </div>
@@ -89,5 +93,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 </html>

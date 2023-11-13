@@ -80,8 +80,8 @@ namespace Pokemons
             }
             catch (Exception ex)
             {
-                Session.Add("Error al agregar Pokemon", ex);
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
             }
 
         }

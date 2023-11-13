@@ -11,7 +11,7 @@ namespace Pokemons
 {
 
 
-    public partial class Testing
+    public partial class Login
     {
 
         /// <summary>

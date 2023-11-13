@@ -3,23 +3,31 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">    
     <h1>Mí Perfil</h1>
     <div class="row">
-        <section class="col-3 me-lg-5" >
-            <asp:Label Text="Email" runat="server" />
+        <section class="col-md-5 me-lg-5 mb-5" >
+            <label for="txtEmail">Email</label>
             <asp:TextBox ID="txtEmail" runat="server" cssClass="mb-3 form-control"/> 
 
-            <asp:Label Text="Nombre" runat="server" />
+            <label for="txtNombre">Nombre</label>
             <asp:TextBox ID="txtNombre" runat="server" cssClass="mb-3 form-control"/> 
 
-            <asp:Label Text="Edad" runat="server"/>
-            <asp:TextBox ID="txtEdad" runat="server" cssClass="mb-3 form-control"/>
+            <label for="txtFechaNac">Fecha de nacimiento</label>
+            <asp:TextBox ID="txtFechaNac" TextMode="Date" runat="server" cssClass="mb-3 form-control"/> 
 
-            <asp:Button runat="server" Text="Guardar Datos" CssClass="btn btn-primary"/>
+            <label for="txtEdad">Edad</label>
+            <asp:TextBox ID="txtEdad" runat="server" cssClass="mb-3 form-control" TextMode="Number" Enabled="false"/>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input btn btn-success" ID="cbxAdmin" type="checkbox" runat="server" disabled>
+                <span>Admin</span>
+            </div>
+            <asp:Button runat="server" Text="Guardar Datos" ID="btnGuardarDatos" OnClick="btnGuardarDatos_Click" CssClass="btn btn-primary mt-5"/>
+
         </section>
-        <div class="col-4">
+        <div class="col-md-4">
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
                     <input type="file" name="txtImagen" runat="server" ID="txtImagen" class="form-control mb-3" onchange="txtImagen_onchange"/>
-                    <asp:Image ImageUrl="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" ID="imgPerfil" CssClass="img-fluid" runat="server" />
+                    <asp:Image ID="imgPerfil" CssClass="img-fluid" runat="server" />
                 </ContentTemplate>
             </asp:UpdatePanel>
        </div>    

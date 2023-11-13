@@ -54,19 +54,17 @@ namespace Negocio
                     user.Email = (string)lector["email"];
                     user.Password = (string)lector["password"];
 
-                    if (!(lector["dob"] is  DBNull))
-                        user.Edad = DateTime.Now.Year - ((DateTime)lector["dob"]).Year;
 
+                    if (!(lector["dob"] is DBNull))
+                        user.FechaNacimiento = (DateTime)lector["dob"];
                     if (!(lector["imagenProfile"] is DBNull))
                         user.ImagenPerfil = (string)lector["imagenProfile"];
 
                     return true;
-
                 }
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -100,6 +98,30 @@ namespace Negocio
             }
             datos.cerrarConexion();
             return false;
+        }
+
+        public void GuardarPerfil(Usuario user)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE USUARIOS SET name = @nombre,  dob = @fechaNac, imagenProfile = @imgProfile, Email = @email where id = @id");
+                datos.setearParametros("@nombre", user.Nombre);
+                datos.setearParametros("@fechaNac", user.FechaNacimiento);
+                datos.setearParametros("@imgProfile", user.ImagenPerfil);
+                datos.setearParametros("@email", user.Email);
+                datos.setearParametros("@id", user.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

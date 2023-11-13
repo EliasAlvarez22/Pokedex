@@ -12,8 +12,16 @@ namespace Pokemons
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["error"] != null)
+            {
                 lblError.Text = Session["error"].ToString();
+                if ((string)Session["error"] == "Sin acceso a esta pagina.")                
+                    lblTitulo.Visible = false;
+                else 
+                    lblTitulo.Visible = true;
+                
+            }
             
+
         }
     }
 }

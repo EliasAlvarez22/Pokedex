@@ -178,67 +178,122 @@ namespace Negocio
 
                 throw ex; 
             }
-        }
-        public List<Pokemon> Filtrar(string campo = "", string criterio = "", string filtroAvanzado = "", string numero = "")
+        }        
+        public List<Pokemon> Filtrar(string campo, string criterio, string filtroAvanzado)
         {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1 And ";
+                             
                
-                if(numero != "")
+                if (campo == "Número")
                 {
-                     consulta += " Numero = " + numero;
+                    switch (criterio)
+                    {
+                        case "Mayor a":
+                            consulta += "Numero > " + filtroAvanzado;
+                            break;
+                        case "Menor a":
+                            consulta += "Numero < " + filtroAvanzado;
+                            break;
+                        default:
+                            consulta += "Numero = " + filtroAvanzado;
+                            break;
+                    }
                 }
-                else
+                else if (campo == "Nombre")
                 {
-                    if (campo == "Número")
+                    switch (criterio)
                     {
-                        switch (criterio)
-                        {
-                            case "Mayor a":
-                                consulta += "Numero > " + filtroAvanzado;
-                                break;
-                            case "Menor a":
-                                consulta += "Numero < " + filtroAvanzado;
-                                break;
-                            default:
-                                consulta += "Numero = " + filtroAvanzado;
-                                break;
-                        }
+                        case "Comienza con":
+                            consulta += "Nombre like '" + filtroAvanzado + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "Nombre like '%" + filtroAvanzado + "'";
+                            break;
+                        case "Igual que":
+                            consulta += "Nombre like '%" + filtroAvanzado + "%'";
+                            break;
+                        default:
+                            break;
                     }
-                    else if (campo == "Nombre")
+                }
+                else if (campo == "Tipo Elemento")
+                {
+                    consulta += "E.Descripcion = '" + criterio + "'";
+                }
+                /*
+                {   Campo descripcion..
+                    switch (criterio)
                     {
-                        switch (criterio)
-                        {
-                            case "Comienza con":
-                                consulta += "Nombre like '" + filtroAvanzado + "%' ";
-                                break;
-                            case "Termina con":
-                                consulta += "Nombre like '%" + filtroAvanzado + "'";
-                                break;
-                            default:
-                                consulta += "Nombre like '%" + filtroAvanzado + "%'";
-                                break;
-                        }
+                        case "Comienza con":
+                            consulta += "P.Descripcion like '" + filtroAvanzado + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "P.Descripcion like '%" + filtroAvanzado + "'";
+                            break;
+                        case "Igual que":
+                            consulta += "P.Descripcion like '%" + filtroAvanzado + "%'";
+                            break;
+                        default:
+                            break;
                     }
-                    else
+                }+*/                              
+                datos.setearConsulta(consulta);
+                datos.ejecutarConsulta();
+                SqlDataReader lector = datos.Lector;
+
+                while (lector.Read())
+                {
+                    Pokemon aux = new Pokemon
                     {
-                        switch (criterio)
-                        {
-                            case "Comienza con":
-                                consulta += "P.Descripcion like '" + filtroAvanzado + "%' ";
-                                break;
-                            case "Termina con":
-                                consulta += "P.Descripcion like '%" + filtroAvanzado + "'";
-                                break;
-                            default:
-                                consulta += "P.Descripcion like '%" + filtroAvanzado + "%'";
-                                break;
-                        }
-                    }
-                }              
+                        Id = (int)lector["Id"],
+                        Numero = (int)lector["Numero"],
+                        Nombre = (string)lector["Nombre"],
+                        Descripcion = (string)lector["Descripcion"]
+                    };
+                    if (!(lector["UrlImagen"] is DBNull))
+                        aux.UrlImagen = (string)lector["UrlImagen"];
+
+                    aux.Tipo = new Elemento
+                    {
+                        Id = (int)lector["IdTipo"],
+                        Descripcion = (string)lector["Tipo"]
+                    };
+                    aux.Debilidad = new Elemento
+                    {
+                        Id = (int)lector["IdDebilidad"],
+                        Descripcion = (string)lector["Debilidad"]
+                    };
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<Pokemon> Filtrar(string filtro)
+        {
+            List<Pokemon> lista = new List<Pokemon>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1 And ";
+
+                if (filtro.Contains("1 2 3 4 5 6 7 8 9")){
+
+                }
+                consulta += "";
+               
                 datos.setearConsulta(consulta);
                 datos.ejecutarConsulta();
                 SqlDataReader lector = datos.Lector;
